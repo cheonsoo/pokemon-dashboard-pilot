@@ -1,2 +1,2 @@
-# pokemon-dashboard-pilot
+# react-rq
 Created with CodeSandbox
