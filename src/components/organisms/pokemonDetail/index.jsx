@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
-import axios from "axios";
 import { useQuery } from "react-query";
 import { css } from "@emotion/react";
 import Modal from "../../atoms/modal";
+import { getPokemonDetail } from "../../../api/";
 
 const usePrevious = (val) => {
   const ref = useRef();
@@ -26,12 +26,7 @@ const PokemonDetail = ({ name = "" }) => {
     console.log(`prev: ${prevName}, name: ${name}`);
     if (name === prevName) return data;
 
-    const url = `https://pokeapi.co/api/v2/pokemon/${name}`;
-    console.log("url", url);
-    return axios.get(url).then((res) => {
-      console.log(res.data);
-      return res.data;
-    });
+    return getPokemonDetail(name);
   });
 
   if (status === "loading") console.log("loading ...");
